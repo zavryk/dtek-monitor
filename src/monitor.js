@@ -3,7 +3,6 @@ import { chromium } from "playwright"
 import {
   TELEGRAM_BOT_TOKEN,
   TELEGRAM_CHAT_ID,
-  CITY,
   STREET,
   HOUSE,
   SHUTDOWNS_PAGE,
@@ -38,8 +37,6 @@ async function getInfo() {
       async ({ CITY, STREET, csrfToken }) => {
         const formData = new URLSearchParams()
         formData.append("method", "getHomeNum")
-        formData.append("data[0][name]", "city")
-        formData.append("data[0][value]", CITY)
         formData.append("data[1][name]", "street")
         formData.append("data[1][value]", STREET)
         formData.append("data[2][name]", "updateFact")
