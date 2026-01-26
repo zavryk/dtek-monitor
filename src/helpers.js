@@ -33,14 +33,20 @@ export function loadLastMessage() {
   return lastMessage
 }
 
-export function saveLastMessage({ date, message_id } = {}) {
+export function saveLastMessage({ date, message_id, text } = {}) {
   fs.mkdirSync(path.dirname(LAST_MESSAGE_FILE), { recursive: true })
   fs.writeFileSync(
     LAST_MESSAGE_FILE,
-    JSON.stringify({
-      message_id,
-      date,
-    })
+    JSON.stringify(
+      {
+        message_id,
+        date,
+        text,
+      },
+      null,
+      2
+    ),
+    "utf8"
   )
 }
 
