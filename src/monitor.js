@@ -110,10 +110,19 @@ function generateMessage(info) {
   const reason = capitalize(sub_type).replace(/\bЕкстренні\b/g, "Екстрені")
   const begin = start_date.split(" ")[0]
   const end = end_date.split(" ")[0]
+  const [beginTime, beginDate] = start_date.split(" ")
+  const [endTime, endDate] = end_date.split(" ")
+  const sameDay = beginDate === endDate
+
+  const period = sameDay
+    ? `${beginTime} — ${endTime} ${endDate}`
+    : `${beginTime} ${beginDate} — ${endTime} ${endDate}`
+
+ 
 
   return [
     "🚨🚨 <b>Екстрене (аварійне) відключення:</b>",
-    `<blockquote><code>🌚 ${begin}—${end}</code></blockquote>`,
+    `<blockquote><code>🌚 ${period}</code></blockquote>`,
     "",
     `⚠️ <b>Причина: </b><i>${reason}.</i>`,
     "",
